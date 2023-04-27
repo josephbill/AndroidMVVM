@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">HRApp</string>
+    <string name="title_activity_mvv_m">MvvM</string>
+</resources>
