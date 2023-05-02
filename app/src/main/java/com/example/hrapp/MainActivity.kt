@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -26,7 +27,10 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MaterialTheme {
-               myButton()
+                Column(modifier = Modifier.padding(10.dp)) {
+                    myButton()
+                    myButtonPostUpdate()
+                }
            }
         }
     }
@@ -44,7 +48,25 @@ fun myButton(){
         val intent = Intent(context, MvvM::class.java)
         launcher.launch(intent)
     }) {
-        Text("Go to New Activity")
+        Text("MVVM/ Retrofit GET")
+    }
+}
+
+
+@Composable
+fun myButtonPostUpdate(){
+    val context = LocalContext.current
+    val launcher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        // Handle the result of the launched activity here
+    }
+    // Add your UI elements here, and use the launcher to start the new activity
+    Button(onClick = {
+        val intent = Intent(context, com.example.hrapp.postupdate.MainActivity::class.java)
+        launcher.launch(intent)
+    }) {
+        Text("Retrofit Post")
     }
 }
 

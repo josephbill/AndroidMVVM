@@ -27,3 +27,6 @@ and management of objects and their dependencies.
 ## Plugins 
 1. hilt 
 2. kapt
+
+## POST AND UPDATE 
+1. post model -> data holder class
